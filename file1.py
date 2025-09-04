@@ -16,14 +16,15 @@ y = data.target
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.10, random_state=42)
 print(X_train.shape,  X_test.shape, y_train.shape, y_test.shape)
 
-max_depth = 5 # Maximum depth of the tree for base learners in the forest
-n_estimators = 1 # Number of trees in the forest
+max_depth = 4 # Maximum depth of the tree for base learners in the forest
+n_estimators = 6 # Number of trees in the forest
 
 print("Training RandomForestClassifier...")
 
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
 print("MLflow Tracking URI:", mlflow.get_tracking_uri())
 
+# Set the experiment name
 mlflow.set_experiment("Wine_Quality_Classification") # Ek experiment banaya jiska naam hai
 
 # Start an MLflow run
@@ -43,13 +44,13 @@ with mlflow.start_run():
     # Confusion matrix
     cm = confusion_matrix(y_test, y_pred)
     plt.figure(figsize=(6, 4))
-    sns.heatmap(cm, annot=True, fmt="d", cmap="Reds", xticklabels=data.target_names, yticklabels=data.target_names)
+    sns.heatmap(cm, annot=True, fmt="d", cmap="Greens", xticklabels=data.target_names, yticklabels=data.target_names)
     plt.ylabel("Actual")
     plt.title("Confusion Matrix")
     plt.savefig("confusion_matrix.png")
 
     # Log parameters and metrics to MLflow
-    mlflow.log_metric("accuracy", accuracy) 
+    mlflow.log_metric("accuracy", accuracy)
     mlflow.log_param("max_depth", max_depth)
     mlflow.log_param("n_estimators", n_estimators)
 
