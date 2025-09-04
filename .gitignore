@@ -27,3 +27,4 @@ build/
 # MLflow
 mlruns/
 mlruns.db
+mlartifacts/
