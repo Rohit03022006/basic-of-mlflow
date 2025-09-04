@@ -1,0 +1,30 @@
+# Virtual environment
+venv/
+.venv/
+env/
+mlflow/
+
+# Compiled Python files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+
+# Temporary files and logs
+*.log
+tmp/
+*.tmp
+
+# Distribution / build files
+dist/
+build/
+*.egg-info/
+
+# MLflow
+mlruns/
+mlruns.db
+mlartifacts/
